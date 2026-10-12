@@ -1,0 +1,34 @@
+const form = document.getElementById('formkontak');
+form.addEventListener("submit", function (event) {
+
+	// mencegah form berpindah ke halaman lain
+	 event.preventDefault();
+	//========NOMOR WHATSAPP TUJUAN============
+	const nomorWhatsApp = "6287857176475";
+	//========MENGAMBIL DATA DARI FORM============
+	const nama = document.getElementById("nama").value;
+    const email = document.getElementById("email").value;
+    const telepon = document.getElementById("telepon").value;
+    const minat = document.getElementById("minat").value;
+    const pesan = document.getElementById("pesan").value;
+	
+const isiPesan = `Halo, saya menghubungi melalui website CV.
+
+Nama Lengkap : ${nama}
+Email        : ${email}
+No. Telepon  : ${telepon}
+Bidang Minat : ${minat}
+Pesan        : ${pesan}`;
+
+//========MENGUBAH PESAN MENJADI FORMAT URL============
+ const pesanEncoded = encodeURIComponent(isiPesan);
+
+//========MEMBUAT LINK WHATSAPP============
+	const urlWhatsApp =
+         `https://wa.me/${nomorWhatsApp}?text=${pesanEncoded}`;
+
+    // ======== MEMBUKA WHATSAPP ========
+    window.open(urlWhatsApp, "_blank");
+
+});
+
